@@ -1,13 +1,12 @@
-# jwt-auth
+# svelte_kit_jwt_auth
 
 This is an example project demonstrating the json web token (jwt) authentication process.
 
 ## Running locally
 
-Clone svelte kit repo then,
 
 ```bash
-cd examples/jwt-auth
+cd svelte_kit_jwt_auth
 pnpm i && pnpm dev
 ```
 
