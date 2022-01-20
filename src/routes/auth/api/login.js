@@ -3,7 +3,8 @@ import {sign} from 'jsonwebtoken'
 import {serialize} from 'cookie'
 import {dev} from '$app/env'
 
-export async function post({body,url}){
+export async function post({request,url}){
+    const body = await request.json()
     const {username,password} = body
     // For example, I have created username and password's in ./_user.json
     //Here, I am validating username and password this api received,
