@@ -1,7 +1,9 @@
 import users from './_user.json'
-import {sign} from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
 import {serialize} from 'cookie'
 import {dev} from '$app/env'
+
+const {sign} = jwt
 
 export async function post({request,url}){
     const body = await request.json()

@@ -1,5 +1,7 @@
 import {parse} from 'cookie';
-import {verify} from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
+
+const {verify} = jwt
 
 export async function handle({ event, resolve }) {
 	const {request,locals} = event
