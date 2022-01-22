@@ -4,7 +4,7 @@ This is an example project demonstrating the json web token (jwt) authentication
 
 ## Running locally
 
-
+Add `VITE_JWT_PRIVATE_KEY` in `.env` as secret for `jsonwebtoken`
 ```bash
 cd svelte_kit_jwt_auth
 pnpm i && pnpm dev
