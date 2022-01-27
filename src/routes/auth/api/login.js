@@ -22,7 +22,7 @@ export async function post({request,url}){
     }
     const jwt = jsonwebtoken.sign({username:user.username}, import.meta.env.VITE_JWT_PRIVATE_KEY)// add a private key in .env
 
-    const cookie = createCookie({name:'jwt',value:jwt,origin:url.hostname})
+    const cookie = createCookie({name:'jwt',value:jwt,domain:url.hostname})
     return {
         status : 200,
         headers  :{
@@ -33,16 +33,16 @@ export async function post({request,url}){
 
 /**
  * 
- * @param {{name:string,value:string,origin:string}} 
+ * @param {{name:string,value:string,domain:string}} 
  * @returns {string} cookie
  */
-function createCookie({name,value,origin}){
+function createCookie({name,value,domain}){
     let expires = new Date()
     expires.setMonth(expires.getMonth()+6) //setting cookie to expire in 6 months
     let cookie_options = {httpOnly:true, path:'/',sameSite:true,expires}
     if(!dev){
         cookie_options.secure = true
-        cookie_options.domain = origin
+        cookie_options.domain = domain
     }
     const cookie = serialize(name,value,cookie_options)
     return cookie

@@ -19,7 +19,6 @@
             const data = await res.json()
             error = data.error
         }else if(res.status==200){
-            // goto('/')
             location.href = '/'
         }
     }
