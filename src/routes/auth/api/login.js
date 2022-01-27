@@ -5,7 +5,7 @@ import {dev} from '$app/env'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function post({request,url}){
-    console.log(url.origin)
+    console.log(url)
     const body = await request.json()
     const {username,password} = body
     // For example, I have created username and password's in ./_user.json
