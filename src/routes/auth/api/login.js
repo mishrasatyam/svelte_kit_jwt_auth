@@ -1,11 +1,11 @@
 import users from './_user.json'
-import * as jwt from 'jsonwebtoken'
+import jsonwebtoken from 'jsonwebtoken'
 import {serialize} from 'cookie'
 import {dev} from '$app/env'
 
-const {sign} = jwt
-
+/** @type {import('@sveltejs/kit').RequestHandler} */
 export async function post({request,url}){
+    console.log(url.origin)
     const body = await request.json()
     const {username,password} = body
     // For example, I have created username and password's in ./_user.json
@@ -20,7 +20,7 @@ export async function post({request,url}){
             }
         }
     }
-    const jwt = sign({username:user.username}, import.meta.env.VITE_JWT_PRIVATE_KEY)// add a private key in .env
+    const jwt = jsonwebtoken.sign({username:user.username}, import.meta.env.VITE_JWT_PRIVATE_KEY)// add a private key in .env
 
     const cookie = createCookie({name:'jwt',value:jwt,origin:url.origin})
     return {
@@ -31,6 +31,11 @@ export async function post({request,url}){
     }
 }
 
+/**
+ * 
+ * @param {{name:string,value:string,origin:string}} 
+ * @returns {string} cookie
+ */
 function createCookie({name,value,origin}){
     let expires = new Date()
     expires.setMonth(expires.getMonth()+6) //setting cookie to expire in 6 months
