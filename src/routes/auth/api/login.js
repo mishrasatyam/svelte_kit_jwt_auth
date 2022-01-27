@@ -22,7 +22,7 @@ export async function post({request,url}){
     }
     const jwt = jsonwebtoken.sign({username:user.username}, import.meta.env.VITE_JWT_PRIVATE_KEY)// add a private key in .env
 
-    const cookie = createCookie({name:'jwt',value:jwt,origin:url.origin.replace('https://','').replace('http://','')})
+    const cookie = createCookie({name:'jwt',value:jwt,origin:url.hostname})
     return {
         status : 200,
         headers  :{
