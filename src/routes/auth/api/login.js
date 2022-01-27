@@ -5,7 +5,7 @@ import {dev} from '$app/env'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function post({request,url}){
-    console.log(url.host,url.hostname,url.origin)
+    // console.log(url.host,url.hostname,url.origin)
     const body = await request.json()
     const {username,password} = body
     // For example, I have created username and password's in ./_user.json
@@ -22,7 +22,7 @@ export async function post({request,url}){
     }
     const jwt = jsonwebtoken.sign({username:user.username}, import.meta.env.VITE_JWT_PRIVATE_KEY)// add a private key in .env
 
-    const cookie = createCookie({name:'jwt',value:jwt,origin:url.origin})
+    const cookie = createCookie({name:'jwt',value:jwt,origin:url.origin.replace('https://','').replace('http://','')})
     return {
         status : 200,
         headers  :{
