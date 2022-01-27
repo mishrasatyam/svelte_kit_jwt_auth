@@ -11,7 +11,3 @@ pnpm i && pnpm dev
 ```
 
 Code will run at [http://localhost:3000](http://localhost:3000)
-
-## FOUC in login
-
-This is an open issue on [github](https://github.com/sveltejs/kit/issues/2349)

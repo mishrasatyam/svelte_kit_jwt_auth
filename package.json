@@ -8,7 +8,7 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
